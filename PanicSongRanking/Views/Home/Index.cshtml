@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div style="float:right;">
-                                    <input type="button" value="Export to Panicfreaks!" onclick="getTopList();" />
+                                    <input type="button" value="Export to Panicfreaks!" onclick="getTopPanicList();" />
                                 </div>
                             </div>
                         </div>
@@ -85,6 +85,7 @@
                                 <li class="ph-list-item">@song.Name</li>
                                         }
                             
+
                         </ul>
                     </div>
                     <div id="ph-yourList" style="float:right;padding-right:150px;">
@@ -126,6 +127,9 @@
                             <ul id="ph-sortableList-Yours"></ul>
                         </div>
                     </div>
+                    <div style="float:right;">
+                        <input type="button" value="Export to Panicfreaks!" onclick="getTopPhishList();" />
+                    </div>
                 </div>
             </div>
     </text>);
@@ -160,8 +164,9 @@
     function placeholder(element) {
         return $("<li class='list-item' id='placeholder'>Drop Here!</li>");
     }
-    function getTopList() {
-        debugger;
+    function getTopPanicList() {
+
+        var heading = "<p>My Top Panic Picks:</p><br/>----------------------------";
         var htmlStart = "[LIST=1]";
         var htmlBody = "";
         var htmlEnd = "[/LIST]";
@@ -169,21 +174,41 @@
             htmlBody = htmlBody + "[*]" + value.innerText;
         });
 
-        var html = htmlStart + htmlBody + htmlEnd;
+        var html = heading + htmlStart + htmlBody + htmlEnd;
 
-        var dialog = $('#dialog');
-
-        dialog.kendoDialog({
-            width: "450px",
-            title: "Software Update",
-            closable: false,
-            modal: false,
-            content: html,
-            actions: [
-                { text: 'Close' }
-            ]
+        var alertWindow = $("<div />").kendoWindow({
+            title: "Copy contents",
+            resizable: false,
+            modal: true,
+            width: "200px"
         });
-        dialog.data("kendoDialog").open();
+
+        alertWindow.data("kendoWindow")
+            .content(html)
+            .center().open();
+    }
+    function getTopPhishList() {
+
+        var heading = "<p>My Top Phish Picks:</p><br/>----------------------------";
+        var htmlStart = "[LIST=1]";
+        var htmlBody = "";
+        var htmlEnd = "[/LIST]";
+        $('#ph-sortableList-Yours li').each(function (e, value) {
+            htmlBody = htmlBody + "[*]" + value.innerText;
+        });
+
+        var html = heading + htmlStart + htmlBody + htmlEnd;
+
+        var alertWindow = $("<div />").kendoWindow({
+            title: "Copy contents",
+            resizable: false,
+            modal: true,
+            width: "200px"
+        });
+
+        alertWindow.data("kendoWindow")
+            .content(html)
+            .center().open();
     }
 </script>
 <style>
