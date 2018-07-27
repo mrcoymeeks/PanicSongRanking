@@ -25,8 +25,6 @@
                                                             {
                                                     <li class="list-item">@psong.Name</li>
                                                             }
-                                                /**/
-                                                /**/
 
                                             </ul>
                                         </div>
@@ -86,8 +84,6 @@
                                     {
                             <li class="ph-list-item">@song.Name</li>
                                     }
-                        /**/
-                        /**/
 
 
                     </ul>
@@ -148,7 +144,6 @@
                                                 {
                                         <li class="d-list-item">@song.Name</li>
                                                 }
-                                    /**/
 
                                 </ul>
                             </div>
@@ -234,7 +229,21 @@
 )
 
 <script>
+    $('#sortableList-Main li').dblclick(function (e) {
+        
+        $('#sortableList-Yours').append('<li class="list-item">' + this.innerText + '</li>');
+        $('#sortableList-Main li:contains("' + this.innerText + '")').remove();
+    });
+    $('#ph-sortableList-Main li').dblclick(function (e) {
 
+        $('#ph-sortableList-Yours').append('<li class="ph-list-item">' + this.innerText + '</li>');
+        $('#ph-sortableList-Main li:contains("' + this.innerText + '")').remove();
+    });
+    $('#d-sortableList-Main li').dblclick(function (e) {
+
+        $('#d-sortableList-Yours').append('<li class="d-list-item">' + this.innerText + '</li>');
+        $('#d-sortableList-Main li:contains("' + this.innerText + '")').remove();
+    });
     function placeholder(element) {
         return $("<li class='list-item' id='placeholder'>Drop Here!</li>");
     }
