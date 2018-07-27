@@ -20,6 +20,10 @@ namespace PanicSongRanking.Controllers
             phishSongList = BuildPhishSongList();
             ViewBag.PhishSongList = phishSongList;
 
+            List<Song> deadSongList = new List<Song>();
+            deadSongList = BuildDeadSongList();
+            ViewBag.DeadSongList = deadSongList;
+
             return View();
         }
 
@@ -40,6 +44,20 @@ namespace PanicSongRanking.Controllers
         private List<Song> BuildPhishSongList()
         {
             var masterList = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(@"~/App_Data/PhishSongList.txt"));
+            List<Song> songs = new List<Song>();
+            int id = 1;
+
+            foreach (var song in masterList)
+            {
+                songs.Add(new Song(id, song));
+                id++;
+            }
+            return songs;
+        }
+
+        private List<Song> BuildDeadSongList()
+        {
+            var masterList = System.IO.File.ReadAllLines(HostingEnvironment.MapPath(@"~/App_Data/DeadSongsList.txt"));
             List<Song> songs = new List<Song>();
             int id = 1;
 

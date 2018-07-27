@@ -196,6 +196,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DeadSongsList.txt" />
     <Content Include="App_Data\PhishSongList.txt" />
     <Content Include="App_Data\SongList.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
