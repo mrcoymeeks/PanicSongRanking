@@ -1,163 +1,189 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
-<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/kendo/2018.2.620/kendo.all.min.js")" type="text/javascript"></script>
-<link href="@Url.Content("~/Content/kendo/2018.2.620/kendo.bootstrap.min.css")" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="~/Scripts/kendo/2018.2.620/kendo.all.min.js" type="text/javascript"></script>
+<link href="~/Content/kendo/2018.2.620/kendo.bootstrap.min.css" rel="stylesheet" />
 
 @(Html.Kendo().TabStrip()
-    .Name("tabstrip")
-    .Animation(animation =>
-        animation.Open(effect =>
-            effect.Fade(FadeDirection.In)))
-    .Items(tabstrip =>
-    {
-        tabstrip.Add().Text("Panic")
-        .Selected(true)
-        .Content(@<text>
-<div id="panicSection">
-    <div class="list-wrapper">
-        <div id="mainList" style="float:left;height:800px;overflow-y:scroll;padding-left:150px;">
-            <div style="text-align:center;width:200px;">WSP Originals</div>
-            <ul id="sortableList-Main">
-                @foreach (var psong in ViewBag.PanicSongList)
-                        {
-                <li class="list-item">@psong.Name</li>
-                    }
-        
-            </ul>
-        </div>
-        <div id="yourList" style="float:right;padding-right:150px;">
-            <div id="rankings" style="float:left;">
-                <div class="number-item">&nbsp;</div>
-                <div class="number-item">1.</div>
-                <div class="number-item">2.</div>
-                <div class="number-item">3.</div>
-                <div class="number-item">4.</div>
-                <div class="number-item">5.</div>
-                <div class="number-item">6.</div>
-                <div class="number-item">7.</div>
-                <div class="number-item">8.</div>
-                <div class="number-item">9.</div>
-                <div class="number-item">10.</div>
-                <div class="number-item">11.</div>
-                <div class="number-item">12.</div>
-                <div class="number-item">13.</div>
-                <div class="number-item">14.</div>
-                <div class="number-item">15.</div>
-                <div class="number-item">16.</div>
-                <div class="number-item">17.</div>
-                <div class="number-item">18.</div>
-                <div class="number-item">19.</div>
-                <div class="number-item">20.</div>
-                <div class="number-item">21.</div>
-                <div class="number-item">22.</div>
-                <div class="number-item">23.</div>
-                <div class="number-item">24.</div>
-                <div class="number-item">25.</div>
-                <div class="number-item">26.</div>
-                <div class="number-item">27.</div>
-                <div class="number-item">28.</div>
-                <div class="number-item">29.</div>
-                <div class="number-item">30.</div>
-            </div>
-            <div id="yourlist-wrapper" style="float:right;">
-                <div style="text-align:center;width:200px;">Top 30</div>
-                <ul id="sortableList-Yours"></ul>
-            </div>
-        </div>
-        <div style="float:right;">
-            <input type="button" value="Export to Panicfreaks!" onclick="alert('hello');" />
-        </div>
-    </div>
-</div>
-            </text>);
-        tabstrip.Add().Text("Phish")
-        .Content(@<text>
-<div id="phishSection">
-    <div class="ph-list-wrapper">
-        <div id="ph-mainList" style="float:left;height:800px;overflow-y:scroll;padding-left:150px;">
-            <div style="text-align:center;width:200px;">Phish Originals</div>
-            <ul id="ph-sortableList-Main">
-                @foreach (var song in ViewBag.PhishSongList)
+                .Name("tabstrip")
+                .Animation(animation =>
+                    animation.Open(effect =>
+                        effect.Fade(FadeDirection.In)))
+                .Items(tabstrip =>
                 {
-                    <li class="ph-list-item">@song.Name</li>
-                }
-            </ul>
-        </div>
-        <div id="ph-yourList" style="float:right;padding-right:150px;">
-            <div id="ph-rankings" style="float:left;">
-                <div class="number-item">&nbsp;</div>
-                <div class="number-item">1.</div>
-                <div class="number-item">2.</div>
-                <div class="number-item">3.</div>
-                <div class="number-item">4.</div>
-                <div class="number-item">5.</div>
-                <div class="number-item">6.</div>
-                <div class="number-item">7.</div>
-                <div class="number-item">8.</div>
-                <div class="number-item">9.</div>
-                <div class="number-item">10.</div>
-                <div class="number-item">11.</div>
-                <div class="number-item">12.</div>
-                <div class="number-item">13.</div>
-                <div class="number-item">14.</div>
-                <div class="number-item">15.</div>
-                <div class="number-item">16.</div>
-                <div class="number-item">17.</div>
-                <div class="number-item">18.</div>
-                <div class="number-item">19.</div>
-                <div class="number-item">20.</div>
-                <div class="number-item">21.</div>
-                <div class="number-item">22.</div>
-                <div class="number-item">23.</div>
-                <div class="number-item">24.</div>
-                <div class="number-item">25.</div>
-                <div class="number-item">26.</div>
-                <div class="number-item">27.</div>
-                <div class="number-item">28.</div>
-                <div class="number-item">29.</div>
-                <div class="number-item">30.</div>
+                    tabstrip.Add().Text("Panic")
+                    .Selected(true)
+                    .Content(@<text>
+                        <div id="panicSection">
+                            <div class="list-wrapper">
+                                <div id="mainList" style="float:left;height:800px;overflow-y:scroll;padding-left:150px;">
+                                    <div style="text-align:center;width:200px;">WSP Originals</div>
+                                    <ul id="sortableList-Main">
+                                        @foreach (var psong in ViewBag.PanicSongList)
+                                                    {
+                                            <li class="list-item">@psong.Name</li>
+                                                    }
+                                        
+                                    </ul>
+                                </div>
+                                <div id="yourList" style="float:right;padding-right:150px;">
+                                    <div id="rankings" style="float:left;">
+                                        <div class="number-item">&nbsp;</div>
+                                        <div class="number-item">1.</div>
+                                        <div class="number-item">2.</div>
+                                        <div class="number-item">3.</div>
+                                        <div class="number-item">4.</div>
+                                        <div class="number-item">5.</div>
+                                        <div class="number-item">6.</div>
+                                        <div class="number-item">7.</div>
+                                        <div class="number-item">8.</div>
+                                        <div class="number-item">9.</div>
+                                        <div class="number-item">10.</div>
+                                        <div class="number-item">11.</div>
+                                        <div class="number-item">12.</div>
+                                        <div class="number-item">13.</div>
+                                        <div class="number-item">14.</div>
+                                        <div class="number-item">15.</div>
+                                        <div class="number-item">16.</div>
+                                        <div class="number-item">17.</div>
+                                        <div class="number-item">18.</div>
+                                        <div class="number-item">19.</div>
+                                        <div class="number-item">20.</div>
+                                        <div class="number-item">21.</div>
+                                        <div class="number-item">22.</div>
+                                        <div class="number-item">23.</div>
+                                        <div class="number-item">24.</div>
+                                        <div class="number-item">25.</div>
+                                        <div class="number-item">26.</div>
+                                        <div class="number-item">27.</div>
+                                        <div class="number-item">28.</div>
+                                        <div class="number-item">29.</div>
+                                        <div class="number-item">30.</div>
+                                    </div>
+                                    <div id="yourlist-wrapper" style="float:right;">
+                                        <div style="text-align:center;width:200px;">Top 30</div>
+                                        <ul id="sortableList-Yours"></ul>
+                                    </div>
+                                </div>
+                                <div style="float:right;">
+                                    <input type="button" value="Export to Panicfreaks!" onclick="getTopList();" />
+                                </div>
+                            </div>
+                        </div>
+                    </text>);
+                            tabstrip.Add().Text("Phish")
+    .Content(@<text>
+            <div id="phishSection">
+                <div class="ph-list-wrapper">
+                    <div id="ph-mainList" style="float:left;height:800px;overflow-y:scroll;padding-left:150px;">
+                        <div style="text-align:center;width:200px;">Phish Originals</div>
+                        <ul id="ph-sortableList-Main">
+                            @foreach (var song in ViewBag.PhishSongList)
+                                        {
+                                <li class="ph-list-item">@song.Name</li>
+                                        }
+                            
+                        </ul>
+                    </div>
+                    <div id="ph-yourList" style="float:right;padding-right:150px;">
+                        <div id="ph-rankings" style="float:left;">
+                            <div class="number-item">&nbsp;</div>
+                            <div class="number-item">1.</div>
+                            <div class="number-item">2.</div>
+                            <div class="number-item">3.</div>
+                            <div class="number-item">4.</div>
+                            <div class="number-item">5.</div>
+                            <div class="number-item">6.</div>
+                            <div class="number-item">7.</div>
+                            <div class="number-item">8.</div>
+                            <div class="number-item">9.</div>
+                            <div class="number-item">10.</div>
+                            <div class="number-item">11.</div>
+                            <div class="number-item">12.</div>
+                            <div class="number-item">13.</div>
+                            <div class="number-item">14.</div>
+                            <div class="number-item">15.</div>
+                            <div class="number-item">16.</div>
+                            <div class="number-item">17.</div>
+                            <div class="number-item">18.</div>
+                            <div class="number-item">19.</div>
+                            <div class="number-item">20.</div>
+                            <div class="number-item">21.</div>
+                            <div class="number-item">22.</div>
+                            <div class="number-item">23.</div>
+                            <div class="number-item">24.</div>
+                            <div class="number-item">25.</div>
+                            <div class="number-item">26.</div>
+                            <div class="number-item">27.</div>
+                            <div class="number-item">28.</div>
+                            <div class="number-item">29.</div>
+                            <div class="number-item">30.</div>
+                        </div>
+                        <div id="ph-yourlist-wrapper" style="float:right;">
+                            <div style="text-align:center;width:200px;">Top 30</div>
+                            <ul id="ph-sortableList-Yours"></ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="ph-yourlist-wrapper" style="float:right;">
-                <div style="text-align:center;width:200px;">Top 30</div>
-                <ul id="ph-sortableList-Yours"></ul>
-            </div>
-        </div>
-    </div>
-</div>
-            </text>);
-    })
-    )
-    
+    </text>);
+            })
+)
 
 
+
 @(Html.Kendo().Sortable()
-        .For("#sortableList-Main")
-        .PlaceholderHandler("placeholder")
-        .ConnectWith("#sortableList-Yours")
+                    .For("#sortableList-Main")
+                    .PlaceholderHandler("placeholder")
+                    .ConnectWith("#sortableList-Yours")
 )
 @(Html.Kendo().Sortable()
-            .For("#sortableList-Yours")
-            .PlaceholderHandler("placeholder")
-            .ConnectWith("#sortableList-Main")
+                        .For("#sortableList-Yours")
+                        .PlaceholderHandler("placeholder")
+                        .ConnectWith("#sortableList-Main")
 )
 @(Html.Kendo().Sortable()
-        .For("#ph-sortableList-Main")
-        .PlaceholderHandler("placeholder")
-        .ConnectWith("#ph-sortableList-Yours")
+                    .For("#ph-sortableList-Main")
+                    .PlaceholderHandler("placeholder")
+                    .ConnectWith("#ph-sortableList-Yours")
 )
 @(Html.Kendo().Sortable()
-            .For("#ph-sortableList-Yours")
-            .PlaceholderHandler("placeholder")
-            .ConnectWith("#ph-sortableList-Main")
+                        .For("#ph-sortableList-Yours")
+                        .PlaceholderHandler("placeholder")
+                        .ConnectWith("#ph-sortableList-Main")
 )
 
 <script>
+
     function placeholder(element) {
         return $("<li class='list-item' id='placeholder'>Drop Here!</li>");
+    }
+    function getTopList() {
+        debugger;
+        var htmlStart = "[LIST=1]";
+        var htmlBody = "";
+        var htmlEnd = "[/LIST]";
+        $('#sortableList-Yours li').each(function (e, value) {
+            htmlBody = htmlBody + "[*]" + value.innerText;
+        });
+
+        var html = htmlStart + htmlBody + htmlEnd;
+
+        var dialog = $('#dialog');
+
+        dialog.kendoDialog({
+            width: "450px",
+            title: "Software Update",
+            closable: false,
+            modal: false,
+            content: html,
+            actions: [
+                { text: 'Close' }
+            ]
+        });
+        dialog.data("kendoDialog").open();
     }
 </script>
 <style>
